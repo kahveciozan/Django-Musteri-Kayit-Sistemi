@@ -1,0 +1,24 @@
+{% extends "employee_register/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+    <h1 class="display-4">MÜŞTERİ KAYIT SİSTEMİ</h1>
+    <p class="lead font-italic">***Hoşgeldiniz, {{ request.user.get_full_name }} olarak giriş yaptınız *** </p>
+    <hr class="my-4">
+    <form action="" method="post" autocomplete="off" enctype="multiple/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <div class="row">
+            <div class="col-md-8">
+                <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i> Kaydet</button>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'employee_list' %}" class="btn btn-secondary btn-block btn-lg">
+                    <i class="fas fa-stream"></i> Listeye Geri Dön
+                </a>
+            </div>
+        </div>
+    </form>
+
+{% endblock content %}
